@@ -39,6 +39,10 @@ export default function App() {
             <ProductItem prod={prod} key={prod.id} />
           ))}
         </ul>
+        <div className="tableButtons">
+          <buttom className="button">Anterior</buttom>
+          <buttom className="button">Próximo</buttom>
+        </div>
       </main>
     </div>
   );
