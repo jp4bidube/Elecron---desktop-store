@@ -11,7 +11,7 @@ import Productform from "../components/ProductForm";
 export default function App() {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(0);
-  const [totalPage, setTotalPage] = useState();
+  const [totalPage, setTotalPage] = useState(0);
 
   useEffect(() => {
     async function loadProducts() {
@@ -33,7 +33,7 @@ export default function App() {
     } else {
       ant.style.backgroundColor = "rgba(233, 30, 99, 0.7)";
     }
-    if (page >= totalPage) {
+    if (page === totalPage) {
       prox.style.backgroundColor = "rgba(233, 30, 99, 0.3)";
       return;
     } else {
@@ -49,7 +49,7 @@ export default function App() {
 
   function handleNext() {
     let prox = document.getElementById("prox");
-    if (page >= totalPage) {
+    if (page === totalPage) {
       prox.style.backgroundColor = "rgba(233, 30, 99, 0.3)";
       return;
     } else {
