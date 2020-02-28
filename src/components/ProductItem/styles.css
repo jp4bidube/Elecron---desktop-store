@@ -18,7 +18,8 @@ li.dev-item header img {
 }
 
 li.dev-item header .user-info {
-  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .user-info strong {
@@ -28,24 +29,40 @@ li.dev-item header .user-info {
 }
 
 .user-info span {
-  font-size: 13px;
+  font-size: 15px;
   color: #999;
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 li.dev-item p {
   color: #666;
   font-size: 14px;
   line-height: 20px;
-  margin: 10px 0;
+  margin: 6.8px 0;
 }
 
-li.dev-item a {
+li.dev-item .value {
   color: rgba(233, 30, 99, 0.7);
   font-size: 14px;
   text-decoration: none;
 }
 
-li.dev-item a:hover {
+li.dev-item value:hover {
   color: rgba(233, 30, 99, 1);
+}
+
+li div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+li div .containtItem {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+li div .actions {
+  display: flex;
+  flex-direction: column;
 }
