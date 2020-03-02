@@ -29,13 +29,11 @@ export default function App() {
 
     if (page === 0) {
       ant.style.backgroundColor = "rgba(233, 30, 99, 0.3)";
-      return;
     } else {
       ant.style.backgroundColor = "rgba(233, 30, 99, 0.7)";
     }
     if (page === totalPage) {
       prox.style.backgroundColor = "rgba(233, 30, 99, 0.3)";
-      return;
     } else {
       prox.style.backgroundColor = "rgba(233, 30, 99, 0.7)";
     }

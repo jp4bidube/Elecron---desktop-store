@@ -33,6 +33,28 @@ main ul {
   background: rgba(233, 30, 99, 0.3);
 }
 
+.deleteButton {
+  cursor: pointer;
+  width: 25px;
+  height: 23px;
+  color: #ff4444;
+}
+
+.deleteButton:active {
+  color: #cc0000;
+}
+
+.editButton {
+  cursor: pointer;
+  width: 25px;
+  height: 23px;
+  color: rgba(233, 30, 99, 0.7);
+}
+
+.editButton:active {
+  color: rgba(233, 30, 99, 0.3);
+}
+
 @media (max-width: 650px) {
   main ul {
     grid-template-columns: 1fr;

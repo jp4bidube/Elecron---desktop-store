@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.css";
+import { GoTrashcan, GoPencil } from "react-icons/go";
 
 export default function ProductItem({ prod }) {
   return (
@@ -19,7 +20,13 @@ export default function ProductItem({ prod }) {
         Acessar perfil no Github
       </a> */}
         </div>
-        <div className="actions"> teste</div>
+        <div className="actions">
+          <GoPencil title="Editar produto" className="editButton"></GoPencil>
+          <GoTrashcan
+            title="Remover produto"
+            className="deleteButton"
+          ></GoTrashcan>
+        </div>
       </div>
     </li>
   );
