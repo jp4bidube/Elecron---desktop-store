@@ -11,6 +11,8 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-icons": "^3.9.0",
+    "react-router-dom": "^5.1.2",
+    "react-router-next": "^4.0.0-alpha.5",
     "react-scripts": "3.4.0"
   },
   "scripts": {
