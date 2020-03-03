@@ -1,13 +1,60 @@
 .topBar {
-    height: 65px;
-    width: 100%;
-    background-color: rgba(233, 30, 99, 0.7);
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  height: 65px;
+  width: 100%;
+  background-color: rgba(233, 30, 99, 0.7);
+}
+.topBar p {
+  padding: 15px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #fff;
+}
+.logoImg {
+  width: 100px;
+  height: 100px;
+  margin-left: 30px;
+}
+.backButtom {
+  display: flex;
+  border: 0;
+  background: transparent;
+  font-size: 20px;
+  padding-top: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.5s;
+  margin-left: 25px;
+  text-align: center;
+  height: 100%;
+}
+.backButtom label {
+  padding-left: 5px;
+}
 
-  @media (max-width: 650px) {
-    
-    .topBar {
-      position: fixed;
-      top:0px;
-    }
+.backButtom:hover {
+  color: rgba(255, 255, 255, 0.534);
+}
+.backButtom:active {
+  color: rgba(255, 255, 255, 0.068);
+}
+
+@media (max-width: 650px) {
+  .topBar {
+    position: fixed;
+    top: 0px;
+  }
+  .topBar img {
+    width: 90px;
+    height: 90px;
+  }
+  .logoImg {
+    display: none;
+  }
+  .topBar p {
+    display: none;
+  }
 }

@@ -1,121 +1,53 @@
 #app {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 30px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+#app main {
+  margin-left: 30px;
+}
+
+@media (max-width: 1000px) {
+  #app {
+    flex-direction: column;
   }
-  
   #app main {
-    margin-left: 30px;
+    margin-left: 0;
+    margin-top: 30px;
   }
-  
-  @media (max-width: 1000px) {
-    #app {
-      flex-direction: column;
-    }
-    #app main {
-      margin-left: 0;
-      margin-top: 30px;
-    }
-  
-    #app aside {
-      width: 100%;
-    }
-  }
-  
-  .topBar {
-    height: 65px;
+
+  #app aside {
     width: 100%;
-    background-color: rgba(233, 30, 99, 0.7);
   }
-  
+}
+
+.topBar {
+  height: 65px;
+  width: 100%;
+  background-color: rgba(233, 30, 99, 0.7);
+}
+
+.bottomBar {
+  padding: 0px;
+  height: 25px;
+  width: 100%;
+  background-color: rgba(233, 30, 99, 0.7);
+  bottom: 0;
+  color: white;
+  text-align: center;
+}
+@media (min-width: 1000px) {
   .bottomBar {
-    padding: 0px;
-    height: 25px;
-    width: 100%;
-    background-color: rgba(233, 30, 99, 0.7);
-    bottom: 0;
-    color: white;
-    text-align: center;
-  }
-  @media (min-width: 1000px) {
-    .bottomBar {
-      position: fixed;
-    }
-  }  
-  
-  @media (max-width: 650px) {
-    .notification {
-      width: 100%;
-      margin-top: 65px;
-      margin-left: 1%;
-    }
-    #app {
-      margin-top: 30px;
-    }
-  }
-  .notification {
     position: fixed;
-    height: 45px;
-    width: 20%;
-    margin-left: 80%;   
-    background-color: #B3E07A;
-    transform-origin: right;
-    text-align: center;
-    padding-top: 10px;
-    border-radius: 3px;
-    float: right;
-    color: white;
-    -webkit-animation: notify 3s ease-in-out;
-    animation: notify 3s ease-in-out;
-    box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.02), 0 0 14px 0 rgba(0, 0, 0, 0.3);
-    overflow: hidden;
   }
-  
-  @-webkit-keyframes notify {
-    0% {transform: scaleX(0);width: 20%;}
-    10% {transform: scaleX(1);}
-    13% {transform: scale(1.1);}
-    16% {transform: scale(1);}
-    55% {transform: scaleX(1);}
-    65% {transform: scaleX(0.25);}
-    95% {transform: scaleX(0);}
-    100% {transform: scaleX(-50);}
+}
+
+@media (max-width: 650px) {
+  #app {
+    margin-top: 30px;
   }
-  
-  @keyframes notify {
-    0% {transform: scaleX(0);width: 20%;}
-    10% {transform: scaleX(1);}
-    13% {transform: scale(1.1);}
-    16% {transform: scale(1);}
-    55% {transform: scaleX(1);}
-    65% {transform: scaleX(0.25);}
-    95% {transform: scaleX(0);}
-    100% {transform: scaleX(-50);}
-  }
-  
-  .identifier {
-    -webkit-animation: exit 3s ease-in-out ;
-    animation: exit 3s ease-in-out ;
-  }
-  
-  .text {
-    -webkit-animation: exit 3s ease-in-out ;
-    animation: exit 3s ease-in-out ;
-  }
-  
-  @-webkit-keyframes exit {
-    0% {opacity: 1;}
-    55% {opacity: 1;}
-    65% {opacity: 0;}  
-    100% {opacity: 0;}
-  }
-  
-  @keyframes exit {
-    0% {opacity: 1;}
-    55% {opacity: 1;}
-    65% {opacity: 0;}  
-    100% {opacity: 0;}
-  }
+}
