@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../../styles/global.css";
 import "./styles.css";
 import "../../styles/Sidebar.css";
@@ -9,14 +9,14 @@ import ProductItem from "../../components/ProductItem";
 import Productform from "../../components/ProductForm";
 import { useNavigate } from "react-router-dom";
 
+import { MainContext } from "../../contexts/MainContext";
+
 export default function Products() {
   const [products, setProducts] = useState([]);
-  const [product, setProduct] = useState(null);
   const [page, setPage] = useState(0);
   const [totalPage, setTotalPage] = useState(0);
-  const [title, setTitle] = useState("Cadastrar");
-  const [message, setMessage] = useState("");
-  const [showMess, setShowMess] = useState(false);
+
+  const { setMessage } = useContext(MainContext);
 
   const navigate = useNavigate();
 
@@ -47,18 +47,11 @@ export default function Products() {
     }
   }, [page, totalPage, products]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setShowMess(false);
-    }, 3000);
-  }, [message]);
-
   async function handleAddDev(data) {
     await api.post("/products", data);
 
     loadProducts();
     setMessage("Producto cadastrado com sucesso!");
-    setShowMess(true);
   }
 
   async function handleEdit(id) {
@@ -68,9 +61,7 @@ export default function Products() {
   async function handleDelete(id) {
     const response = await api.delete(`/products/${id}`);
     console.log(response.data);
-
     setMessage(response.data);
-    setShowMess(true);
     loadProducts();
   }
 
@@ -108,16 +99,9 @@ export default function Products() {
 
   return (
     <>
-      <div
-        id="message"
-        className="notification"
-        style={{ display: showMess ? "block" : "none" }}
-      >
-        <div className="text"> {message}</div>
-      </div>
       <div id="app">
         <aside>
-          <strong>{title}</strong>
+          <strong>Cadastrar</strong>
           <Productform onSubmit={handleAddDev} />
         </aside>
         <main>

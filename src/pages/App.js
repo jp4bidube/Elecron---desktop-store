@@ -6,13 +6,17 @@ import Header from "../components/Header/index";
 import Footer from "../components/Footer/index";
 import Message from "../components/Message/index";
 
+import { MainProvider } from "../contexts/MainContext";
+
 export default function App() {
   return (
-    <Router>
-      <Header />
-      <Message />
-      <Routes />
-      <Footer />
-    </Router>
+    <MainProvider>
+      <Router>
+        <Header />
+        <Message />
+        <Routes />
+        <Footer />
+      </Router>
+    </MainProvider>
   );
 }

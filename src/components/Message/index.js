@@ -1,18 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext, useCallback, useState } from "react";
+import { MainContext } from "../../contexts/MainContext";
 import "./styles.css";
 
 export default function Message() {
-  useEffect(() => {}, []);
+  const [msgup, setMsgup] = useState();
+  const [, updateState] = React.useState();
+  const forceUpdate = useCallback(() => updateState({}), []);
+  const { message } = useContext(MainContext);
+  useEffect(() => {
+    forceUpdate();
+  }, [forceUpdate, message]);
 
   return (
-    <div className="Toastify">
+    <div className="Toastify" style={{ display: message ? "block" : "none" }}>
       <div className="Toastify__toast-container Toastify__toast-container--top-right">
-        <div
-          className="Toastify__toast Toastify__toast--success"
-          // style="transform: translateX(0px); opacity: 1; transition: transform 0.2s ease 0s, opacity 0.2s ease 0s;"
-        >
+        <div className="Toastify__toast Toastify__toast--success">
           <div role="alert" class="Toastify__toast-body">
-            Pulando para próxima aula em 3 segundos
+            {message}
           </div>
         </div>
       </div>
