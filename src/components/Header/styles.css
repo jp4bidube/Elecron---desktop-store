@@ -1,0 +1,13 @@
+.topBar {
+    height: 65px;
+    width: 100%;
+    background-color: rgba(233, 30, 99, 0.7);
+  }
+
+  @media (max-width: 650px) {
+    
+    .topBar {
+      position: fixed;
+      top:0px;
+    }
+}

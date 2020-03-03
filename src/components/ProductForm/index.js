@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-export default function Productform({ onSubmit }) {
+import api from '../../services/api'
+
+
+export default function Productform({ onSubmit, id }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -21,6 +24,20 @@ export default function Productform({ onSubmit }) {
     setQuantity("");
     setValue("");
   }
+
+  async function getProd() {
+    const res = await api.get(`/products/${id}`);
+    setName(res?.data?.name)
+    setDescription(res?.data?.description)
+    setQuantity(res?.data?.quantity)
+    setValue(res?.data?.value)
+
+
+  }
+  useEffect(() => {
+    getProd()
+  }, [id]);
+
 
   return (
     <form onSubmit={handleSubmit}>
