@@ -17,7 +17,7 @@ export default function Products() {
   const [page, setPage] = useState(0);
   const [totalPage, setTotalPage] = useState(0);
 
-  const { setMessage } = useContext(MainContext);
+  const { setBackButtom } = useContext(MainContext);
 
   const navigate = useNavigate();
 
@@ -87,6 +87,7 @@ export default function Products() {
 
   async function handleEdit(id) {
     navigate(`/product/edit/${id}`);
+    setBackButtom(true);
   }
 
   async function handleDelete(id) {

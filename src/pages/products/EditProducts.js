@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import "./styles.css";
 import Productform from "../../components/ProductForm";
 import api from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import { store } from "react-notifications-component";
+import { MainContext } from "../../contexts/MainContext";
 
 export default function EditProducts() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { backButtom, setBackButtom } = useContext(MainContext);
 
   async function handleUpdateProduct(data) {
     await api
@@ -27,7 +29,8 @@ export default function EditProducts() {
             onScreen: true
           }
         });
-        navigate("/");
+        navigate("/products");
+        setBackButtom(false);
       })
       .catch(error => {
         const message = "Erro ao tentar alterar produto";
