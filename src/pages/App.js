@@ -4,8 +4,9 @@ import "./App.css";
 import Routes from "../routes";
 import Header from "../components/Header/index";
 import Footer from "../components/Footer/index";
-import Message from "../components/Message/index";
 
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 import { MainProvider } from "../contexts/MainContext";
 
 export default function App() {
@@ -13,7 +14,7 @@ export default function App() {
     <MainProvider>
       <Router>
         <Header />
-        <Message />
+        <ReactNotification />
         <Routes />
         <Footer />
       </Router>

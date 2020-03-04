@@ -10,6 +10,7 @@ import Productform from "../../components/ProductForm";
 import { useNavigate } from "react-router-dom";
 
 import { MainContext } from "../../contexts/MainContext";
+import { store } from "react-notifications-component";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -48,10 +49,40 @@ export default function Products() {
   }, [page, totalPage, products]);
 
   async function handleAddDev(data) {
-    await api.post("/products", data);
-
-    loadProducts();
-    setMessage("Producto cadastrado com sucesso!");
+    await api
+      .post("/products", data)
+      .then(res => {
+        loadProducts();
+        store.addNotification({
+          title: "Sucesso!",
+          message: `Produto ${res.data.name} foi cadastrado com sucesso!`,
+          type: "success",
+          insert: "top",
+          container: "top-right",
+          animationIn: ["animated", "slideIn"],
+          animationOut: ["animated", "fadeOut"],
+          dismiss: {
+            duration: 5000,
+            onScreen: true
+          }
+        });
+      })
+      .catch(error => {
+        const message = "Erro ao tentar cadastar produto";
+        store.addNotification({
+          title: "Erro!",
+          message: `${error.data ? error.data : message}`,
+          type: "danger",
+          insert: "top",
+          container: "top-right",
+          animationIn: ["animated", "slideIn"],
+          animationOut: ["animated", "fadeOut"],
+          dismiss: {
+            duration: 4000,
+            onScreen: true
+          }
+        });
+      });
   }
 
   async function handleEdit(id) {
@@ -59,10 +90,40 @@ export default function Products() {
   }
 
   async function handleDelete(id) {
-    const response = await api.delete(`/products/${id}`);
-    console.log(response.data);
-    setMessage(response.data);
-    loadProducts();
+    await api
+      .delete(`/products/${id}`)
+      .then(res => {
+        loadProducts();
+        store.addNotification({
+          title: "Sucesso!",
+          message: `${res.data}`,
+          type: "success",
+          insert: "top",
+          container: "top-right",
+          animationIn: ["animated", "slideIn"],
+          animationOut: ["animated", "fadeOut"],
+          dismiss: {
+            duration: 5000,
+            onScreen: true
+          }
+        });
+      })
+      .catch(error => {
+        const message = "Erro ao tentar excluir produto";
+        store.addNotification({
+          title: "Erro!",
+          message: `${error.data ? error.data : message}`,
+          type: "danger",
+          insert: "top",
+          container: "top-right",
+          animationIn: ["animated", "slideIn"],
+          animationOut: ["animated", "fadeOut"],
+          dismiss: {
+            duration: 4000,
+            onScreen: true
+          }
+        });
+      });
   }
 
   function handleNext() {
