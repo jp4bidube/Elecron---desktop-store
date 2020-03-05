@@ -10,14 +10,13 @@ import Productform from "../../components/ProductForm";
 import { useNavigate } from "react-router-dom";
 
 import { MainContext } from "../../contexts/MainContext";
-import { store } from "react-notifications-component";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(0);
   const [totalPage, setTotalPage] = useState(0);
 
-  const { setBackButtom } = useContext(MainContext);
+  const { setBackButtom, setMessage, setTypeMsg } = useContext(MainContext);
 
   const navigate = useNavigate();
 
@@ -53,35 +52,13 @@ export default function Products() {
       .post("/products", data)
       .then(res => {
         loadProducts();
-        store.addNotification({
-          title: "Sucesso!",
-          message: `Produto ${res.data.name} foi cadastrado com sucesso!`,
-          type: "success",
-          insert: "top",
-          container: "top-right",
-          animationIn: ["animated", "slideIn"],
-          animationOut: ["animated", "fadeOut"],
-          dismiss: {
-            duration: 5000,
-            onScreen: true
-          }
-        });
+        setMessage(`Produto ${res.data.name} foi cadastrado com sucesso!`);
+        setTypeMsg("success");
       })
       .catch(error => {
         const message = "Erro ao tentar cadastar produto";
-        store.addNotification({
-          title: "Erro!",
-          message: `${error.data ? error.data : message}`,
-          type: "danger",
-          insert: "top",
-          container: "top-right",
-          animationIn: ["animated", "slideIn"],
-          animationOut: ["animated", "fadeOut"],
-          dismiss: {
-            duration: 4000,
-            onScreen: true
-          }
-        });
+        setMessage(`${error.data ? error.data : message}`);
+        setTypeMsg("error");
       });
   }
 
@@ -95,35 +72,13 @@ export default function Products() {
       .delete(`/products/${id}`)
       .then(res => {
         loadProducts();
-        store.addNotification({
-          title: "Sucesso!",
-          message: `${res.data}`,
-          type: "success",
-          insert: "top",
-          container: "top-right",
-          animationIn: ["animated", "slideIn"],
-          animationOut: ["animated", "fadeOut"],
-          dismiss: {
-            duration: 5000,
-            onScreen: true
-          }
-        });
+        setMessage(`${res.data}`);
+        setTypeMsg("success");
       })
       .catch(error => {
         const message = "Erro ao tentar excluir produto";
-        store.addNotification({
-          title: "Erro!",
-          message: `${error.data ? error.data : message}`,
-          type: "danger",
-          insert: "top",
-          container: "top-right",
-          animationIn: ["animated", "slideIn"],
-          animationOut: ["animated", "fadeOut"],
-          dismiss: {
-            duration: 4000,
-            onScreen: true
-          }
-        });
+        setMessage(`${error.data ? error.data : message}`);
+        setTypeMsg("error");
       });
   }
 

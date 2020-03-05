@@ -1,13 +1,10 @@
 .Toastify__toast-container {
-  opacity: 0;
   z-index: 9999;
   position: fixed;
   padding: 4px;
   width: 320px;
   box-sizing: border-box;
   color: #fff;
-  animation-name: Toastify__bounceInRight;
-  animation-duration: 4000ms;
 }
 .Toastify__toast-container--top-left {
   top: 1em;
@@ -81,19 +78,23 @@
 }
 .Toastify__toast--default {
   background: #fff;
-  color: #aaa;
+  color: rgb(53, 53, 53);
 }
 .Toastify__toast--info {
-  background: #7159c1;
+  background: #5986c1;
+  color: #fff;
 }
 .Toastify__toast--success {
   background: #4fcda5;
+  color: #fff;
 }
 .Toastify__toast--warning {
   background: #ddcc54;
+  color: #fff;
 }
 .Toastify__toast--error {
   background: #dd5554;
+  color: #fff;
 }
 .Toastify__toast-body {
   margin: auto 0;
@@ -105,6 +106,12 @@
   .Toastify__toast {
     margin-bottom: 0;
   }
+}
+
+.toast-anime {
+  animation: Toastify__bounceInRight 4500ms forwards;
+  -webkit-animation-iteration-count: 1;
+  animation-play-state: paused;
 }
 
 @keyframes Toastify__bounceInRight {
